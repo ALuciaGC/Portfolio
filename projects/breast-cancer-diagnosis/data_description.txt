@@ -1,0 +1,20 @@
+# Data Description
+
+The data used to test the application of both algorithms in this project has been retrieved from the Wisconsin breast cancer dataset from the University of California at Irvine’s Machine Learning Repository. The dataset contains 569 data points with 30 attributes per data point. These attributes are computed from a digitized image of the Fine Needle Aspirate (FNA) of a breast mass and describe characteristics of the cell nuclei present in the image. The attributes include features such as radius, texture, perimeter, area, smoothness, compactness, concavity, concave points, symmetry, and fractal dimension.
+
+Considering that Logistic Regression and ANNs are supervised learning methods implemented as diagnostic support tools, the "target" feature is used as the target variable. The distribution of the classes in the target feature (0.0 for malignant and 1.0 for benign) shows a mild imbalance, with 38% of data entries belonging to class 0 and 62% to class 1 [Figure 1].
+
+## Data Pre-Processing
+
+The analysis applies different data normalization methods for each AI model during data preprocessing:
+
+- **Logistic Regression:** Feature scaling is applied in the form of Standardization using the Scikit-Learn library. Standardized coefficients help compare the relative strength of different predictors or independent variables within the logistic regression model, which is crucial when performing PCA to avoid biased results.
+
+- **Artificial Neural Network (ANN):** Data normalization is performed using a Min-Max Scaler (MMS) to increase the model’s prediction accuracy. MMS shifts and rescales values so that they range from 0 to 1, which is recommended for neural networks. Normalization prevents non-uniform learning where some ANN neurons converge faster than others.
+
+## Feature Selection - Principal Component Analysis (PCA)
+
+PCA is employed as the main feature selection technique in this project. PCA transforms information initially enclosed in correlated data into a set of new orthogonal components, unveiling hidden relationships and supporting data visualization, outlier detection, and classification within newly defined dimensions. By reducing the data to a smaller but more distinguishing subset, PCA helps decrease processing time and increase classification accuracy.
+
+Following Géron’s guidance on selecting the optimal number of dimensions, the project identified the intrinsic dimensionality of the dataset by plotting the variance as a function of the number of dimensions. The selected number of components was found to be 8, preserving a high amount of variance with a smaller number of dimensions [Figure 2].
+
